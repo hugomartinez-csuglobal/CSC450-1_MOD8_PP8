@@ -1,0 +1,41 @@
+BEGIN PROGRAM
+
+IMPORT necessary libraries for threading and timing
+
+DEFINE FUNCTION countUp
+    FOR counter FROM 0 TO 20
+        DISPLAY "Counting Up: " + counter
+        PAUSE for a short duration (to simulate work and improve readability)
+    END FOR
+END FUNCTION
+
+DEFINE FUNCTION countDown
+    FOR counter FROM 20 DOWN TO 0
+        DISPLAY "Counting Down: " + counter
+        PAUSE for a short duration
+    END FOR
+END FUNCTION
+
+MAIN FUNCTION
+
+    DISPLAY "Starting Thread 1: Count Up"
+
+    CREATE Thread1 TO execute countUp function
+
+    START Thread1
+
+    WAIT for Thread1 to complete execution
+
+    DISPLAY "Thread 1 complete. Starting Thread 2: Count Down"
+
+    CREATE Thread2 TO execute countDown function
+
+    START Thread2
+
+    WAIT for Thread2 to complete execution
+
+    DISPLAY "Program complete"
+
+END MAIN
+
+END PROGRAM
